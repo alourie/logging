@@ -1,8 +1,6 @@
 #!/usr/bin/python
 
-import time
 import bintrees
-
 
 def event_stream(filename):
     root = bintrees.AVLTree()
@@ -20,7 +18,7 @@ def event_stream(filename):
                         val=val,
                     )
             else:
-                time.sleep(2) 
+                pass 
 
 if __name__ == "__main__":
     for event in event_stream('1'):
