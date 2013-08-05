@@ -8,15 +8,9 @@ def event_stream(filename):
         while True:
             line = log.readline().split()
             if len(line) > 0:
-                root.insert(line[0], ','.join(line[1:]))
-
-                delta = float(root.max_key()) - float(root.min_key())
-                if delta > 300:
-                    stamp, val = root.pop_min()
-                    yield '{stamp} {val}'.format(
-                        stamp=stamp,
-                        val=val,
-                    )
+                root.insert(line[0], ' '.join(line))
+                if (float(root.max_key()) - float(root.min_key())) > 300:
+                    yield str(root.pop(root.min_key()))
             else:
                 pass 
 
